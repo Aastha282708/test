@@ -1,0 +1,119 @@
+A tuple is just like a list of a sequence of immutable python objects.
+container which is immutable=tuple
+index=read operation
+count=read
+append
+clear
+extend
+remove
+reverse
+sort
+insert
+pop
+
+using literal=([]/())
+/class=(list()/tuple()),without both,using literal seperating by comma
+
+Anuj subedi
+Fundamental of python/python list
+
+
+*****day3
+>Overview of list/tuple
+>Unpacking/indexing/slicing/striding/stepping
+In packing, we place value into a new tuple while in unpacking we extract those values back into variables.
+a[2]=a[2]+2=assinging new value to index 2(replace)
+a[2]+=2=same indexma 2 add hunxa(value update)
+
+>range
+-building function
+-(start,stop,step)
+loop statement(for/while)
+control statement(if,if-else,if-else-else)
+cascading=
+
+s="broadwayinfosys"
+'b':1,
+'r':1,
+'o':'2'
+
+
+# empty dictionary
+my_dict = {}
+
+# dictionary with integer keys
+my_dict = {1: 'apple', 2: 'ball'}
+
+# dictionary with mixed keys
+my_dict = {'name': 'John', 1: [2, 4, 3]}
+
+# using dict()
+my_dict = dict({1:'apple', 2:'ball'})
+
+# from sequence having each item as a pair
+my_dict = dict([(1,'apple'), (2,'ball')])
+
+6.. Count the number of spaces in a string
+Ans.
+s = 'this is python class which is started at 6 oclock.'
+len([x for x in s if x ==" "])
+
+7.. Remove all of the vowels in a string
+Ans.
+s = "broadway"
+v = "aeiou"
+[i for i in s if i not in v]
+
+8.. Find all of the words in a string that are less than 4 letters 
+Ans.
+s = 'this is python class which is started at 6 oclock.'
+[len(i) for i in s.split() if s.split() < 4]
+
+
+1. Use a dictionary comprehension to count the length of each word in a sentence.
+
+2. Use a nested list comprehension to find all of the numbers from 1-1000 that are divisible by any single digit besides 1 (2-9)
+
+3. For all the numbers 1-1000, use a nested list/dictionary comprehension to find the highest single digit any of the numbers is divisible by
+
+exception handling(left)
+selenium
+csv
+file
+1. text file
+2. binary file
+
+log file
+log.txt
+
+python
+new file
+python.txt(write mode)
+while True:
+a=rf.write()
+csv module
+web scapping
+
+dunder method/magic method
+static method
+class method
+inheritance
+
+(M-3)Django
+MVT
+model=databse
+view=main business logic
+T=Template
+
+Mysql
+Postgres
+Oracle
+Sqlite
+JSON
+angular js
+Node js
+react js
+pipenv
+
+
+

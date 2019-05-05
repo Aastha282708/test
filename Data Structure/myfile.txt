@@ -1,0 +1,4 @@
+Python is scripting programming language
+I am learning it
+This is intrepreted language
+Python is dynamic language
