@@ -1,0 +1,26 @@
+{% extends "partials/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Post
+{% endblock title %}
+
+{% block navbar %}
+{% include "partials/nav.html" %}
+{% endblock navbar %}
+
+{% block content %}
+{{ object }}
+<form method="post" action="">
+{% csrf_token %}
+</form>
+
+{% endblock content %}
+
+{% block rightbar %}
+{% include "post/rightbar.html" %}
+{% endblock rightbar %}
+
+{% block footer %}
+{% include "partials/footer.html" %}
+{% endblock footer %}
