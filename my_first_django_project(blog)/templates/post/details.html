@@ -10,9 +10,29 @@ Post
 {% endblock navbar %}
 
 {% block content %}
-{{ object }}
-<form method="post" action="">
+
+<div class="card border-primary">
+  <div class="card-header">{{ object.title }} {{ object.created_at.date }}</div>
+  <div class="card-body text-primary">
+    <p class="card-text">{{ object.body }}</p>
+    <small><span>@{{ object.author }}</span></small>
+  </div>
+</div>
+
+{% for comment in comments %}
+    {{ comment }}
+{% endfor %}
+
+
+
+<form action="" id="create-comment" data-post-id={{ object.pk }}>
 {% csrf_token %}
+<div class="form-group">
+    <label for="comment"><b>Comments</b></label>
+    <textarea class="form-control" id="comment" rows="3"></textarea>
+  </div>
+    <button type="submit" id="comment" class="btn btn-primary">Comment</button>
+
 </form>
 
 {% endblock content %}
@@ -24,3 +44,27 @@ Post
 {% block footer %}
 {% include "partials/footer.html" %}
 {% endblock footer %}
+
+{% block script %}
+{% include "partials/script.html" %}
+<script>
+$.("#comment").click({
+    console.log("clicked");
+    id_ = $("#create-comment").data("post-id");
+    $.ajax({
+        url: id_+"/comment/",
+        method: "post",
+        data: {
+            comment: $("#comment").val()
+        },
+        success : function(data){
+                console.log(data)
+        },
+        error: function(data){
+            console.log("Error")
+            console.log(data)
+        }
+    });
+});
+</script>
+{% endblock script %}

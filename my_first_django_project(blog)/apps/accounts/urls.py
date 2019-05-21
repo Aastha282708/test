@@ -10,3 +10,4 @@ urlpatterns = [
     path("signup-success/", views.index, name="success"),
 ]
 
+  

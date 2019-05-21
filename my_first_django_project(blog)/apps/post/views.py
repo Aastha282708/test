@@ -7,6 +7,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.utils.text import slugify
 from django.views.generic.list import ListView
+from django.db import transaction
 
 # Create your views here.
 def index(request):
@@ -36,7 +37,26 @@ class PostDetailView(DetailView):
     model = Post
     template_name = "post/details.html"
 
+    def get_context_data(self,  **kwargs):
+        # content["comments"] = Comment.objects.filter(post="")
+        # return content
+        pass
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["comments"] = Comment.objects.filter(post=1)
+        return context
+
+
 
 class PostListView(ListView):
     model = Post
     template_name = "post/list.html"
+
+@transaction.atomic
+def create_comment(request, id):
+    commented_by = request.user
+    data = request.data
+    comment_data = data.get("comment")
+    comment = Comment.objects.create(post=id, commented_by=commented_by, comment=comment_data)
+    return comment
