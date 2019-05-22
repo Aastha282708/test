@@ -19,19 +19,34 @@ Post
   </div>
 </div>
 
+
+
+<div id="comment-list">
+<div class="list-group">
 {% for comment in comments %}
-    {{ comment }}
-{% endfor %}
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <small class="text-muted">{{ comment.created_at }}</small>
+    </div>
+    <p class="mb-1">{{ comment.comment }}</p>
+    <small class="text-muted">@{{comment.commented_by}}</small>
+  </a>
+  {% endfor %}
+</div>
+</div>
 
 
 
-<form action="" id="create-comment" data-post-id={{ object.pk }}>
-{% csrf_token %}
+
+
+
+
+<form action="" id="create-comment" data-post-id={{ object.pk }} data-comment-url="{% url 'create-comment' id=object.pk  %}">
 <div class="form-group">
     <label for="comment"><b>Comments</b></label>
     <textarea class="form-control" id="comment" rows="3"></textarea>
   </div>
-    <button type="submit" id="comment" class="btn btn-primary">Comment</button>
+    <button type="submit" class="btn btn-primary">Comment</button>
 
 </form>
 
@@ -48,17 +63,18 @@ Post
 {% block script %}
 {% include "partials/script.html" %}
 <script>
-$.("#comment").click({
-    console.log("clicked");
-    id_ = $("#create-comment").data("post-id");
+$("#create-comment").submit(function(e){
+  e.preventDefault()
     $.ajax({
-        url: id_+"/comment/",
+        url: $("#create-comment").data("comment-url"),
         method: "post",
         data: {
-            comment: $("#comment").val()
+            "comment": $("#comment").val(),
+            "csrfmiddlewaretoken": "{{ csrf_token }}"
         },
         success : function(data){
                 console.log(data)
+                $("#comment-list").replaceWith(data)
         },
         error: function(data){
             console.log("Error")
